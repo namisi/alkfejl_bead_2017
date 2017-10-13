@@ -1,6 +1,6 @@
 # Autóbérlés
 
-##Funkcionális követelmények:
+**Funkcionális követelmények:**
 
 Vendég:
 * Vendégként szeretnénk az aktuális ajánlatok között böngészni.
@@ -17,3 +17,7 @@ Admin:
 * Adminként szeretnénk új atókat felvinni.
 * Adminként szeretnénk jóváhagyni/törölni a rendeléseket.
 
+**Nem funcionális követelmények**
+* Felhasználóbarát kinézet.
+* Gyors működés.
+* Biztonságos működés.
