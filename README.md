@@ -16,3 +16,4 @@ Felhasználó:
 Admin:
 * Adminként szeretnénk új atókat felvinni.
 * Adminként szeretnénk jóváhagyni/törölni a rendeléseket.
+
