@@ -5,7 +5,6 @@ import hu.elte.alkfejl.alkfejl_bead_2017.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import static hu.elte.alkfejl.alkfejl_bead_2017.model.User.Role.USER;
@@ -13,7 +12,6 @@ import static hu.elte.alkfejl.alkfejl_bead_2017.model.User.Role.USER;
 @Controller
 @RequestMapping("/user")
 public class UserController {
-
     @Autowired
     private UserService userService;
 
