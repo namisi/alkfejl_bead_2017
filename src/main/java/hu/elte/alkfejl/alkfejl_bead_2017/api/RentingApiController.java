@@ -34,21 +34,21 @@ public class RentingApiController {
 
     @Role({ADMIN, USER})
     @GetMapping("/{id}")
-    private ResponseEntity<Renting> get(@RequestParam int id) {
+    private ResponseEntity<Renting> get(@PathVariable int id) {
         Renting read = rentingService.get(id);
         return ResponseEntity.ok(read);
     }
 
     @Role({ADMIN, USER})
     @PutMapping("/{id}")
-    private ResponseEntity<Renting> update(@RequestParam int id, @RequestBody Renting renting) {
+    private ResponseEntity<Renting> update(@PathVariable int id, @RequestBody Renting renting) {
         Renting updated = rentingService.update(id, renting);
         return ResponseEntity.ok(updated);
     }
 
     @Role(ADMIN)
     @DeleteMapping("/{id}")
-    private ResponseEntity delete(@RequestParam int id) {
+    private ResponseEntity delete(@PathVariable int id) {
         rentingService.delete(id);
         return ResponseEntity.ok().build();
     }

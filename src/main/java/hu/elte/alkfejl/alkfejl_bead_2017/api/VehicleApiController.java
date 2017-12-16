@@ -33,21 +33,21 @@ public class VehicleApiController {
 
     @Role({ADMIN, USER})
     @GetMapping("/{id}")
-    private ResponseEntity<Vehicle> get(@RequestParam int id) {
+    private ResponseEntity<Vehicle> get(@PathVariable int id) {
         Vehicle read = vehicleService.get(id);
         return ResponseEntity.ok(read);
     }
 
     @Role(ADMIN)
     @PutMapping("/{id}")
-    private ResponseEntity<Vehicle> update(@RequestParam int id, @RequestBody Vehicle vehicle) {
+    private ResponseEntity<Vehicle> update(@PathVariable int id, @RequestBody Vehicle vehicle) {
         Vehicle updated = vehicleService.update(id, vehicle);
         return ResponseEntity.ok(updated);
     }
 
     @Role(ADMIN)
     @DeleteMapping("/{id}")
-    private ResponseEntity delete(@RequestParam int id) {
+    private ResponseEntity delete(@PathVariable int id) {
         vehicleService.delete(id);
         return ResponseEntity.ok().build();
     }
