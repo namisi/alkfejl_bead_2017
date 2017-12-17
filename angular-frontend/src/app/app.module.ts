@@ -20,10 +20,10 @@ import {RouteGuard} from './route.guard';
 import {VehicleService} from './services/vehicle.service';
 import {VehicleListComponent} from './pages/vehicles/vehicle-list/vehicle-list.component';
 import {NewVehicleComponent} from './pages/vehicles/new-vehicle/new-vehicle.component';
-// import {RentingService} from './services/renting.service';
-// import {RentingDetailComponent} from './pages/rentings/renting-detail/renting-detail.component';
-// import {RentingListComponent} from './pages/rentings/renting-list/renting-list.component';
-// import {NewRentingComponent} from './pages/rentings/new-renting/new-renting.component';
+import {RentService} from './services/rent.service';
+// import {RentDetailComponent} from './pages/rents/rent-detail/rent-detail.component';
+import {RentListComponent} from './pages/rents/rent-list/rent-list.component';
+import {NewRentComponent} from './pages/rents/new-rent/new-rent.component';
 
 @NgModule({
   declarations: [
@@ -34,9 +34,9 @@ import {NewVehicleComponent} from './pages/vehicles/new-vehicle/new-vehicle.comp
     StatsComponent,
     HelpComponent,
     ErrorComponent,
-    // RentingDetailComponent,
-    // RentingListComponent,
-    // NewRentingComponent,
+    // RentDetailComponent,
+    RentListComponent,
+    NewRentComponent,
     VehicleListComponent,
     NewVehicleComponent
   ],
@@ -52,7 +52,7 @@ import {NewVehicleComponent} from './pages/vehicles/new-vehicle/new-vehicle.comp
   providers: [
     AuthService,
     RouteGuard,
-    // RentingService,
+    RentService,
     VehicleService
   ],
   bootstrap: [AppComponent]

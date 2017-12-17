@@ -34,8 +34,4 @@ export class VehicleService {
     return this.http.put(Server.routeTo(Routes.VEHICLES) + '/' + vehicle.id, vehicle)
       .map(res => res.json());
   }
-
-  sendMessage(id: number, message: String) {
-    return this.http.post(Server.routeTo(Routes.VEHICLES + '/' + id + '/message'), {message});
-  }
 }

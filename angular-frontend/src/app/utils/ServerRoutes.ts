@@ -3,7 +3,7 @@ export class Routes {
   static REGISTER: String = 'user/register';
   static LOGOUT: String = 'user/logout';
   static VEHICLES: String = 'vehicle';
-  static RENTINGS: String = 'renting';
+  static RENTS: String = 'renting';
 }
 
 export class Server {

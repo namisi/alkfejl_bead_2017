@@ -1,0 +1,37 @@
+<div class="page-body">
+  <h2 class="mat-h2">Rents</h2>
+  <a mat-raised-button routerLink="/rents/new" class="mat-primary">Add new rent</a>
+
+  <mat-table #table [dataSource]="rents">
+    <ng-container matColumnDef="user">
+      <mat-header-cell *matHeaderCellDef> User (renter)</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.user.username}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="vehicle">
+      <mat-header-cell *matHeaderCellDef> Vehicle's license plate</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.vehicle.licensePlateNr}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="startDate">
+      <mat-header-cell *matHeaderCellDef> Starting date</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{toDate(element.startDate) | date}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="endDate">
+      <mat-header-cell *matHeaderCellDef> End date</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{toDate(element.endDate) | date}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="edit">
+      <mat-header-cell *matHeaderCellDef> Actions</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <button mat-button (click)="delete(element.id)" class="mat-accent">Delete</button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+</div>
