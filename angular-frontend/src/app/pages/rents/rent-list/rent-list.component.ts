@@ -30,7 +30,7 @@ export class RentListComponent {
   }
 
   toDate(timestamp: number): Date {
-    return new Date(timestamp);
+    return timestamp === null ? null : new Date(timestamp);
   }
 }
 

@@ -1,53 +1,45 @@
 <div class="page-body">
-  <h2 class="mat-h2">New Vehicle</h2>
-  <form [formGroup]="vehicleForm" novalidate>
+  <h2 class="mat-h2">New Rent</h2>
+  <form [formGroup]="rentForm" novalidate>
 
     <div class="form-control">
       <mat-form-field class="example-full-width">
-        <input matInput placeholder="Manufacturer" formControlName="manufacturer">
-        <mat-error *ngIf="manufacturer.hasError('required')">
-          Manufacturer is <strong>required</strong>
+        <input matInput placeholder="User" formControlName="user">
+        <!--TODO: user dropdown from db to use User instead of String-->
+        <mat-error *ngIf="user.hasError('required')">
+          User is <strong>required</strong>
         </mat-error>
       </mat-form-field>
     </div>
 
     <div class="form-control">
       <mat-form-field class="example-full-width">
-        <input matInput placeholder="Type" formControlName="type">
-        <mat-error *ngIf="type.hasError('required')">
-          Type is <strong>required</strong>
+        <input matInput placeholder="Vehicle" formControlName="vehicle">
+        <!--TODO: vehicle dropdown from db to use Vehicle instead of String-->
+        <mat-error *ngIf="vehicle.hasError('required')">
+          Vehicle is <strong>required</strong>
         </mat-error>
       </mat-form-field>
     </div>
 
     <div class="form-control">
       <mat-form-field class="example-full-width">
-        <input matInput placeholder="License plate number" formControlName="licensePlateNr">
-        <mat-error *ngIf="licensePlateNr.hasError('required')">
-          License plate number is <strong>required</strong>
+        <input matInput placeholder="Starting date" formControlName="startDate">
+        <!--TODO: date selector-->
+        <mat-error *ngIf="startDate.hasError('required')">
+          Starting date is <strong>required</strong>
         </mat-error>
       </mat-form-field>
     </div>
 
     <div class="form-control">
       <mat-form-field class="example-full-width">
-        <input matInput placeholder="Manufactured date" formControlName="manufactureDate">
-        <mat-error *ngIf="manufactureDate.hasError('required')">
-          Manufactured date is <strong>required</strong>
-        </mat-error>
+        <input matInput placeholder="End date" formControlName="endDate">
+        <!--TODO: date selector-->
       </mat-form-field>
     </div>
 
-    <div class="form-control">
-      <mat-form-field class="example-full-width">
-        <input matInput placeholder="Cost/Day" formControlName="costPerDay">
-        <mat-error *ngIf="costPerDay.hasError('required')">
-          Cost/Day is <strong>required</strong>
-        </mat-error>
-      </mat-form-field>
-    </div>
-
-    <button mat-raised-button class="mat-primary" (click)="submit()" [disabled]="!vehicleForm.valid">Send</button>
+    <button mat-raised-button class="mat-primary" (click)="submit()" [disabled]="!rentForm.valid">Send</button>
     <a mat-button class="mat-accent" routerLink="/vehicles">Back</a>
   </form>
 </div>

@@ -11,11 +11,10 @@ import {Router} from '@angular/router';
 })
 export class NewRentComponent implements OnInit {
   rentForm: FormGroup = new FormGroup({
-    licensePlateNr: new FormControl('', [Validators.required]),
-    manufacturer: new FormControl('', [Validators.required]),
-    type: new FormControl('', [Validators.required]),
-    manufactureDate: new FormControl('', [Validators.required]),
-    costPerDay: new FormControl('', [Validators.required])
+    user: new FormControl('', [Validators.required]),
+    vehicle: new FormControl('', [Validators.required]),
+    startDate: new FormControl('', [Validators.required]),
+    endDate: new FormControl('', )
   });
 
   constructor(private rentService: RentService, private router: Router) {
@@ -25,38 +24,33 @@ export class NewRentComponent implements OnInit {
   ngOnInit() {
   }
 
-  get licensePlateNr() {
-    return this.rentForm.get('licensePlateNr');
+  get user() {
+    return this.rentForm.get('user');
   }
 
-  get manufacturer() {
-    return this.rentForm.get('manufacturer');
+  get vehicle() {
+    return this.rentForm.get('vehicle');
   }
 
-  get type() {
-    return this.rentForm.get('type');
+  get startDate() {
+    return this.rentForm.get('startDate');
   }
 
-  get manufactureDate() {
-    return this.rentForm.get('manufactureDate');
-  }
-
-  get costPerDay() {
-    return this.rentForm.get('costPerDay');
+  get endDate() {
+    return this.rentForm.get('endDate');
   }
 
   submit() {
-    // this.rentService.create(
-    //     new Rent(
-    //       this.manufacturer.value,
-    //       this.type.value,
-    //       this.licensePlateNr.value,
-    //       this.costPerDay.value,
-    //       this.manufactureDate.value,
-    //       null))
-    //   .subscribe(
-    //     res => this.router.navigate(['/rents']),
-    //     err => console.log(err)
-    //   );
+    this.rentService.create(
+        new Rent(
+          this.user.value,
+          this.vehicle.value,
+          this.startDate.value,
+          this.endDate.value
+        ))
+      .subscribe(
+        res => this.router.navigate(['/rents']),
+        err => console.log(err)
+      );
   }
 }
