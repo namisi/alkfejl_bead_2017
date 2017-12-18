@@ -3,6 +3,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Rent} from '../../../model/Rent';
 import {RentService} from '../../../services/rent.service';
 import {Router} from '@angular/router';
+import {AuthService} from '../../../services/auth.service';
 
 @Component({
   selector: 'app-new-rent',
@@ -11,13 +12,12 @@ import {Router} from '@angular/router';
 })
 export class NewRentComponent implements OnInit {
   rentForm: FormGroup = new FormGroup({
-    user: new FormControl('', [Validators.required]),
     vehicle: new FormControl('', [Validators.required]),
     startDate: new FormControl('', [Validators.required]),
     endDate: new FormControl('', )
   });
 
-  constructor(private rentService: RentService, private router: Router) {
+  constructor(private rentService: RentService, private router: Router, private authService: AuthService) {
 
   }
 
@@ -41,9 +41,10 @@ export class NewRentComponent implements OnInit {
   }
 
   submit() {
+    console.log(this.authService.user);
     this.rentService.create(
         new Rent(
-          this.user.value,
+          this.authService.user,
           this.vehicle.value,
           this.startDate.value,
           this.endDate.value

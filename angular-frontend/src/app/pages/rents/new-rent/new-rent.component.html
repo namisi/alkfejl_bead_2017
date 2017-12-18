@@ -4,16 +4,6 @@
 
     <div class="form-control">
       <mat-form-field class="example-full-width">
-        <input matInput placeholder="User" formControlName="user">
-        <!--TODO: user dropdown from db to use User instead of String-->
-        <mat-error *ngIf="user.hasError('required')">
-          User is <strong>required</strong>
-        </mat-error>
-      </mat-form-field>
-    </div>
-
-    <div class="form-control">
-      <mat-form-field class="example-full-width">
         <input matInput placeholder="Vehicle" formControlName="vehicle">
         <!--TODO: vehicle dropdown from db to use Vehicle instead of String-->
         <mat-error *ngIf="vehicle.hasError('required')">
@@ -23,20 +13,25 @@
     </div>
 
     <div class="form-control">
-      <mat-form-field class="example-full-width">
-        <input matInput placeholder="Starting date" formControlName="startDate">
-        <!--TODO: date selector-->
-        <mat-error *ngIf="startDate.hasError('required')">
-          Starting date is <strong>required</strong>
-        </mat-error>
-      </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <input matInput [matDatepicker]="minDatePicker" placeholder="Starting date" formControlName="startDate">
+            <mat-datepicker-toggle matSuffix [for]="minDatePicker"></mat-datepicker-toggle>
+            <mat-datepicker #minDatePicker [touchUi]="touch" [disabled]="datepickerDisabled"></mat-datepicker>
+            <mat-error *ngIf="startDate.hasError('required')">
+                Starting date is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
     </div>
 
     <div class="form-control">
-      <mat-form-field class="example-full-width">
-        <input matInput placeholder="End date" formControlName="endDate">
-        <!--TODO: date selector-->
-      </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <input matInput [matDatepicker]="maxDatePicker" placeholder="End date" formControlName="endDate">
+            <mat-datepicker-toggle matSuffix [for]="maxDatePicker"></mat-datepicker-toggle>
+            <mat-datepicker #maxDatePicker [touchUi]="touch" [disabled]="datepickerDisabled"></mat-datepicker>
+            <mat-error *ngIf="endDate.hasError('required')">
+                End date is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
     </div>
 
     <button mat-raised-button class="mat-primary" (click)="submit()" [disabled]="!rentForm.valid">Send</button>
