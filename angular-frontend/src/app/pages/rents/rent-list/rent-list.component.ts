@@ -4,6 +4,7 @@ import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import {Rent} from '../../../model/Rent';
 import {RentService} from '../../../services/rent.service';
+import {AuthService} from '../../../services/auth.service';
 
 @Component({
   selector: 'app-rent-list',
@@ -11,10 +12,13 @@ import {RentService} from '../../../services/rent.service';
   styleUrls: ['./rent-list.component.css']
 })
 export class RentListComponent {
-  displayedColumns: String[] = ['user', 'vehicle', 'startDate', 'endDate', 'edit'];
+  displayedColumns: String[] = ['user', 'vehicle', 'startDate', 'endDate'];
   rents: DataSource<any> = new RentDataSource(this.rentService);
 
-  constructor(private rentService: RentService) {
+  constructor(private rentService: RentService,  private authService: AuthService) {
+    if (authService.isLoggedIn && authService.user.role === 'ADMIN') {
+      this.displayedColumns.push('edit');
+    }
   }
 
   delete(id: number) {
