@@ -7,6 +7,10 @@
     <a mat-button *ngFor="let menu of menus" [routerLink]="menu.link" routerLinkActive="active">{{menu.title}}</a>
   </div>
 
+  <div *ngIf="authService.isLoggedIn" class="authorized">
+      <a mat-button>Welcome {{authService.user.username}}!</a>
+  </div>
+
   <div class="right-side">
     <div *ngIf="!authService.isLoggedIn" class="unauthorized">
       <a mat-button routerLink="/login" routerLinkActive="active">Login</a>/
