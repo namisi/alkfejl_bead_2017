@@ -4,6 +4,8 @@ import {Rent} from '../../../model/Rent';
 import {RentService} from '../../../services/rent.service';
 import {Router} from '@angular/router';
 import {AuthService} from '../../../services/auth.service';
+import {VehicleService} from '../../../services/vehicle.service';
+import { Vehicle } from '../../../model/Vehicle';
 
 @Component({
   selector: 'app-new-rent',
@@ -16,9 +18,10 @@ export class NewRentComponent implements OnInit {
     startDate: new FormControl('', [Validators.required]),
     endDate: new FormControl('', )
   });
+  vehicles: Array<Vehicle>;
 
-  constructor(private rentService: RentService, private router: Router, private authService: AuthService) {
-
+  constructor(private rentService: RentService, private router: Router, private authService: AuthService, private vehicleService: VehicleService) {
+    this.vehicles = this.vehicleService.vehicles;
   }
 
   ngOnInit() {

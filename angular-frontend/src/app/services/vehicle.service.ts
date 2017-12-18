@@ -8,12 +8,14 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class VehicleService {
 
+  vehicles: Array<Vehicle>;
+
   constructor(private http: Http) {
   }
 
   getVehicles(): Observable<Vehicle[]> {
     return this.http.get(Server.routeTo(Routes.VEHICLES))
-      .map(res => res.json());
+      .map(res => this.vehicles = res.json());
   }
 
   create(vehicle: Vehicle): Observable<Vehicle> {

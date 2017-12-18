@@ -2,14 +2,14 @@
   <h2 class="mat-h2">New Rent</h2>
   <form [formGroup]="rentForm" novalidate>
 
-    <div class="form-control">
-      <mat-form-field class="example-full-width">
-        <input matInput placeholder="Vehicle" formControlName="vehicle">
-        <!--TODO: vehicle dropdown from db to use Vehicle instead of String-->
-        <mat-error *ngIf="vehicle.hasError('required')">
-          Vehicle is <strong>required</strong>
-        </mat-error>
-      </mat-form-field>
+     <div class="form-control">
+        <mat-form-field class="example-full-width">
+            <mat-select placeholder="Vehicle" formControlName="vehicle">
+                <mat-option *ngFor="let vehicle of vehicles" [value]="vehicle">
+                  {{ vehicle.manufacturer }} {{ vehicle.type }} {{ vehicle.costPerDay }}$/Day
+                </mat-option>
+              </mat-select>
+        </mat-form-field>
     </div>
 
     <div class="form-control">
