@@ -16,7 +16,7 @@ export class VehicleListComponent {
   vehicles: DataSource<any> = new VehicleDataSource(this.vehicleService);
 
   constructor(private vehicleService: VehicleService, private authService: AuthService) {
-    if (authService.isLoggedIn) {
+    if (authService.isLoggedIn && authService.user.role === 'ADMIN') {
       this.displayedColumns.push('edit');
     }
   }

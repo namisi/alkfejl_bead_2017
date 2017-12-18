@@ -33,7 +33,6 @@
       <mat-header-cell *matHeaderCellDef> Actions</mat-header-cell>
       <mat-cell *matCellDef="let element">
         <button *ngIf="authService.user.role === 'ADMIN'" mat-button (click)="delete(element.id)" class="mat-accent">Delete</button>
-        <button *ngIf="authService.user.role === 'USER' || authService.user.role === 'ADMIN'" mat-button (click)="delete(element.id)" class="mat-accent">Rent</button>
       </mat-cell>
     </ng-container>
 
