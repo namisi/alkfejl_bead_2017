@@ -1,6 +1,6 @@
 <div class="page-body">
   <h2 class="mat-h2">Vehicles</h2>
-  <a mat-raised-button routerLink="/vehicles/new" class="mat-primary">Add new vehicle</a>
+  <a *ngIf="authService.isLoggedIn && (authService.user.role === 'ADMIN')" mat-raised-button routerLink="/vehicles/new" class="mat-primary">Add new vehicle</a>
 
   <mat-table #table [dataSource]="vehicles">
     <ng-container matColumnDef="licensePlateNr">
@@ -28,10 +28,12 @@
       <mat-cell *matCellDef="let element"> {{element.costPerDay}}</mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="edit">
+    
+    <ng-container  matColumnDef="edit">
       <mat-header-cell *matHeaderCellDef> Actions</mat-header-cell>
       <mat-cell *matCellDef="let element">
-        <button mat-button (click)="delete(element.id)" class="mat-accent">Delete</button>
+        <button *ngIf="authService.user.role === 'ADMIN'" mat-button (click)="delete(element.id)" class="mat-accent">Delete</button>
+        <button *ngIf="authService.user.role === 'USER' || authService.user.role === 'ADMIN'" mat-button (click)="delete(element.id)" class="mat-accent">Rent</button>
       </mat-cell>
     </ng-container>
 

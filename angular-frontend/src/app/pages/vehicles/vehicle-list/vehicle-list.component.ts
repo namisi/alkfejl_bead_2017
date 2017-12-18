@@ -4,6 +4,7 @@ import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import {Vehicle} from '../../../model/Vehicle';
 import {VehicleService} from '../../../services/vehicle.service';
+import {AuthService} from '../../../services/auth.service';
 
 @Component({
   selector: 'app-vehicle-list',
@@ -11,10 +12,13 @@ import {VehicleService} from '../../../services/vehicle.service';
   styleUrls: ['./vehicle-list.component.css']
 })
 export class VehicleListComponent {
-  displayedColumns: String[] = ['licensePlateNr', 'manufacturer', 'type', 'manufactureDate', 'costPerDay', 'edit'];
+  displayedColumns: String[] = ['licensePlateNr', 'manufacturer', 'type', 'manufactureDate', 'costPerDay'];
   vehicles: DataSource<any> = new VehicleDataSource(this.vehicleService);
 
-  constructor(private vehicleService: VehicleService) {
+  constructor(private vehicleService: VehicleService, private authService: AuthService) {
+    if (authService.isLoggedIn) {
+      this.displayedColumns.push('edit');
+    }
   }
 
   delete(id: number) {
