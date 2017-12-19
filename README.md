@@ -41,7 +41,8 @@ GET /rent: bérlések listázása
 POST /rent: új bérlés
 GET /rent/new: új bérlés form
 GET /logout: kijelentkezés
-...
+```
+
 ## Adatmodell
 
 ![adatmodell](https://raw.githubusercontent.com/namisi/alkfejl_bead_2017/master/datamodell.png "adatmodell")
