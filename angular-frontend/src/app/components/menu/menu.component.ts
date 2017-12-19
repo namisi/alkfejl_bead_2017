@@ -15,14 +15,14 @@ interface MenuItem {
 })
 export class MenuComponent implements OnInit {
   private common: MenuItem[] = [
-    {link: '/stats', title: 'Statistics'},
+    //{link: '/stats', title: 'Statistics'},
     {link: '/help', title: 'Help'}
   ];
 
   private roleMenus = new Map<String, MenuItem[]>([
     [Role.GUEST, [...this.common, {link: '/vehicles', title: 'Vehicles'}]],
-    [Role.USER, [...this.common, {link: '/vehicles', title: 'Vehicles'}, {link: '/rents', title: 'Rents'}]],
-    [Role.ADMIN, [{link: '/stats', title: 'Statistics'}, {link: '/vehicles', title: 'Vehicles'}, {link: '/rents', title: 'Rents'}]]
+    [Role.USER, [...this.common, {link: '/vehicles', title: 'Vehicles'}, {link: '/rents', title: 'Rents'}]]
+    //[Role.ADMIN, [{link: '/stats', title: 'Statistics'}, {link: '/vehicles', title: 'Vehicles'}, {link: '/rents', title: 'Rents'}]]
   ]);
 
   menus: MenuItem[];
